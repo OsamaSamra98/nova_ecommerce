@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "802641227825",
+    "project_id": "nova-store-1dff1",
+    "storage_bucket": "nova-store-1dff1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:802641227825:android:e16a435979d183f29b6510",
+        "android_client_info": {
+          "package_name": "com.example.nova_ecommerce"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "802641227825-d71vpm6ru76gtqvki6vv3uv6ntgbu86r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAGptqtTirDOegQH9gW1UKKU3eRdPDZot4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "802641227825-d71vpm6ru76gtqvki6vv3uv6ntgbu86r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
