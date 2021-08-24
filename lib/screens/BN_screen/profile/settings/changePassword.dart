@@ -49,7 +49,7 @@ class _changePassword_screenState extends State<changePassword_screen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               AppText(
-                text: 'Change Password',
+                text: 'Change Password'.tr,
                 fontWeight: FontWeight.bold,
                 fontsize: 22,
               ),
@@ -57,19 +57,19 @@ class _changePassword_screenState extends State<changePassword_screen> {
                 height: SizeConfig.scaleHeight(30),
               ),
               app_textfield(
-                title: 'Current Password',
+                title: 'Current Password'.tr,
                 rightpadding: 0,
                 toppadding: 20,
                 controller: _oldPasswordEditingController,
               ),
               app_textfield(
-                title: 'Enter new password',
+                title: 'Enter new password'.tr,
                 rightpadding: 0,
                 toppadding: 20,
                 controller: _newPasswordEditingController,
               ),
               app_textfield(
-                title: 'Repeat password',
+                title: 'Repeat password'.tr,
                 rightpadding: 0,
                 toppadding: 20,
                 controller: _newPasswordConfirmationEditingController,
@@ -80,7 +80,7 @@ class _changePassword_screenState extends State<changePassword_screen> {
               ElevatedButton(
                 onPressed: () {performChangePassword();},
                 child: AppText(
-                  text: 'Confirm',
+                  text: 'Confirm'.tr,
                   color: Colors.white,
                   fontsize: 16,
                   fontWeight: FontWeight.bold,

@@ -5,6 +5,7 @@ import 'package:nova_ecommerce/screens/Auth/login/login_Screen.dart';
 import 'package:nova_ecommerce/screens/BN_screen/profile/crediteCard.dart';
 import 'package:nova_ecommerce/screens/BN_screen/profile/settings/editprofile.dart';
 import 'package:nova_ecommerce/screens/BN_screen/profile/settings/settingScreen.dart';
+import 'package:nova_ecommerce/screens/order/show_all_order_screen.dart';
 import 'package:nova_ecommerce/utils/AppColors.dart';
 import 'package:nova_ecommerce/utils/SizeConfig.dart';
 import 'package:nova_ecommerce/utils/app_text.dart';
@@ -12,6 +13,7 @@ import 'package:nova_ecommerce/utils/helper.dart';
 import 'package:nova_ecommerce/utils/profileCard.dart';
 
 import 'address/address_screen.dart';
+import 'notification_screen.dart';
 
 class profile_screen extends StatefulWidget {
   const profile_screen({Key? key}) : super(key: key);
@@ -26,7 +28,7 @@ class _profile_screenState extends State<profile_screen> {
     return Scaffold(
       appBar: AppBar(
         title: AppText(
-          text: 'Profile',
+          text: 'Profile'.tr,
           fontWeight: FontWeight.bold,
           fontsize: 20,
         ),
@@ -44,32 +46,32 @@ class _profile_screenState extends State<profile_screen> {
             children: [
               profileCard(
                 icon: Icons.person,
-                text: 'Edit Profile',
+                text: 'Edit Profile'.tr,
                 onTap: () =>Get.to(EditProfile()) ,
               ),
               profileCard(
                 icon: Icons.shopping_bag_outlined,
-                text: 'My Purchases',
-                onTap: () {},
+                text: 'My Purchases'.tr,
+                onTap: ()=>Get.to(ShowAllOrdersScreen()) ,
               ),
               profileCard(
                 icon: Icons.notifications_active_outlined,
-                text: 'Notifications ',
-                onTap: () {},
+                text: 'Notifications'.tr,
+                onTap:  ()=>Get.to(NotificationScreen()) ,
               ),
               profileCard(
                 icon: Icons.credit_card_outlined,
-                text: ' PAYMENT CARDS',
+                text: 'Payment Cards'.tr,
                 onTap: () {Get.to(DisplayCardScreen());},
               ),
               profileCard(
                 icon: Icons.add_location,
-                text: 'My Address',
+                text: 'My Address'.tr,
                 onTap: () {Get.to(AddressScreen());},
               ),
               profileCard(
                 icon: Icons.logout,
-                text: 'Logout',
+                text: 'Logout'.tr,
                 iconColor: Colors.white,
                 onTap: () async {
                   await logout();},

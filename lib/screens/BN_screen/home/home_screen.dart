@@ -4,6 +4,7 @@ import 'package:gradient_progress_indicator/widget/gradient_progress_indicator_w
 import 'package:nova_ecommerce/getx/home_getx_controller.dart';
 import 'package:nova_ecommerce/getx/user_getx_controller.dart';
 import 'package:nova_ecommerce/screens/BN_screen/home/sub_categoey_screen.dart';
+import 'package:nova_ecommerce/utils/AppColors.dart';
 import 'package:nova_ecommerce/utils/SizeConfig.dart';
 import 'package:nova_ecommerce/utils/app_text.dart';
 import 'package:nova_ecommerce/utils/category_card.dart';
@@ -28,7 +29,9 @@ class _home_screenState extends State<home_screen> {
   Widget build(BuildContext context) {
     Locale myLocale = Localizations.localeOf(context);
 
-    return Scaffold(body: GetBuilder<HomeGetxController>(
+    return Scaffold(
+
+        body: GetBuilder<HomeGetxController>(
       builder: (HomeGetxController home) {
         if (home.homeModel == null) {
           return Center(
@@ -65,7 +68,7 @@ class _home_screenState extends State<home_screen> {
             child:
                 Column(mainAxisAlignment: MainAxisAlignment.start, children: [
               SizedBox(
-                height: SizeConfig.scaleHeight(50),
+                height: SizeConfig.scaleHeight(30),
               ),
               Container(
                 child: CarouselSlider(
@@ -80,7 +83,7 @@ class _home_screenState extends State<home_screen> {
                 ),
               ),
               titleWidget(
-                title: 'Categories',
+                title: 'Categories'.tr,
                 ontap: () => Get.to(categories_screen()),
               ),
               home.homeModel == null
@@ -104,23 +107,19 @@ class _home_screenState extends State<home_screen> {
                         },
                       ),
                     ),
-              SizedBox(
-                height: SizeConfig.scaleHeight(20),
-              ),
+
               titleWidget(
-                title: 'Latest Product',
-                ontap: () => Get.to(LatestProduct_screen()),
+                title: 'Latest Product'.tr,
+                ontap: () {}
               ),
               SizedBox(
-                height: SizeConfig.scaleHeight(600),
+                height: SizeConfig.scaleHeight(450),
                 child: GridView.builder(
                   physics: NeverScrollableScrollPhysics(),
-                  reverse: true,
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
-                    crossAxisSpacing: 10,
-                    mainAxisSpacing: 10,
-                    childAspectRatio: 152 / 250,
+                    crossAxisSpacing: 5,
+                    childAspectRatio: 152 / 185,
                   ),
                   // itemCount: home.homeModel!.data.latestProducts.length,
                   itemCount: 4,
@@ -132,7 +131,7 @@ class _home_screenState extends State<home_screen> {
                 ),
               ),
               titleWidget(
-                title: 'Products you may like',
+                title: 'Products you may like'.tr,
                 ontap: () => Get.to(''),
               ),
               SizedBox(
@@ -159,6 +158,7 @@ class _home_screenState extends State<home_screen> {
     return widget.controller.homeModel!.data.slider
         .map((e) => Container(
               margin: EdgeInsets.all(SizeConfig.scaleHeight(5)),
+
               child: ClipRRect(
                   borderRadius: BorderRadius.all(Radius.circular(5.0)),
                   child: Stack(

@@ -13,6 +13,8 @@ import 'package:nova_ecommerce/utils/app_text.dart';
 import 'package:nova_ecommerce/utils/category_card.dart';
 import 'package:nova_ecommerce/utils/helper.dart';
 import 'package:nova_ecommerce/utils/Cart_widget.dart';
+
+
 class cart_screen extends StatefulWidget {
   @override
   _cart_screenState createState() => _cart_screenState();
@@ -26,7 +28,7 @@ class _cart_screenState extends State<cart_screen> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: AppText(text: 'MY Cart'),
+          title: AppText(text: 'MY Cart'.tr),
         ),
         body: SingleChildScrollView(
           child: Padding(
@@ -127,18 +129,18 @@ class _cart_screenState extends State<cart_screen> {
                                     height: 50,
                                   ),
                                   AppText(
-                                    text: ' YOUR CART IS EMPTY ',
+                                    text: ' YOUR CART IS EMPTY '.tr,
                                     color: AppColors.Orange_COLOR,
                                     fontWeight: FontWeight.bold,
                                     fontsize: 20,
-                                    letterSpacing: 1,
+                                    letterSpacing: 2,
                                   ),
                                   SizedBox(
                                     height: 30,
                                   ),
                                   AppText(
                                     text:
-                                        'Look like you haven\'t made your choice yet',
+                                        'Look like you haven\'t made your choice yet'.tr,
                                     color: Colors.grey.shade800,
                                     fontsize: 16,
                                     letterSpacing: 1,
@@ -183,7 +185,7 @@ class _cart_screenState extends State<cart_screen> {
                     ));
                   },
                   child: AppText(
-                    text: 'Check Out',
+                    text: 'Check Out'.tr,
                     color: AppColors.background_COLOR,
                     fontsize: 20,
                     fontWeight: FontWeight.bold,

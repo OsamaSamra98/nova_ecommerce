@@ -49,7 +49,7 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
       appBar: AppBar(
         centerTitle: true,
         title: AppText(
-          text: 'Add Address',
+          text: 'Add Address'.tr,
           color: AppColors.Orange_COLOR,
           fontsize: 20,
         ),
@@ -66,11 +66,11 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
           ),
           app_textfield(
             controller: nameEditingController,
-            title: 'Name',
+            title: 'Name'.tr,
           ),
           app_textfield(
             controller: infoEditingController,
-            title: 'info',
+            title: 'info'.tr,
           ),
           SizedBox(height: 42),
           ElevatedButton(
@@ -78,7 +78,7 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
               await performAdd();
             },
             child: AppText(
-              text: 'Add',
+              text: 'Add'.tr,
               color: Colors.white,
               fontsize: 16,
               fontWeight: FontWeight.bold,

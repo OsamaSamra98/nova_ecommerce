@@ -29,7 +29,7 @@ class _EditProfileState extends State<EditProfile> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             AppText(
-              text: 'Edit Profile',
+              text: 'Edit Profile'.tr,
               fontWeight: FontWeight.bold,
               fontsize: 20,
             ),
@@ -37,16 +37,16 @@ class _EditProfileState extends State<EditProfile> {
               height: SizeConfig.scaleHeight(30),
             ),
             app_textfield(
-              title: 'Name',
+              title: 'Name'.tr,
               rightpadding: 0,
             ),
             app_textfield(
-              title: 'Mobile',
+              title: 'Mobile'.tr,
               rightpadding: 0,
               toppadding: 20,
             ),
             app_textfield(
-              title: 'Password',
+              title: 'Password'.tr,
               rightpadding: 0,
               toppadding: 20,
             ),
@@ -54,7 +54,7 @@ class _EditProfileState extends State<EditProfile> {
             ElevatedButton(
               onPressed: () {},
               child: AppText(
-                text: 'Save Changes',
+                text: 'Save Changes'.tr,
                 color: Colors.white,
                 fontsize: 16,
                 fontWeight: FontWeight.bold,
@@ -73,7 +73,7 @@ class _EditProfileState extends State<EditProfile> {
                 Get.to(changePassword_screen());
               },
               child: AppText(
-                text: 'Change Password',
+                text: 'Change Password'.tr,
                 color: Colors.white,
                 fontsize: 16,
                 fontWeight: FontWeight.bold,

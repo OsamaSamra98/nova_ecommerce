@@ -32,7 +32,7 @@ class _OrderScreenState extends State<OrderScreen> {
       appBar: AppBar(
         centerTitle: true,
         title: AppText(
-          text: 'Make Order',
+          text: 'Make Order'.tr,
           color: AppColors.Orange_COLOR,
           fontsize: 20,
         ),
@@ -128,7 +128,7 @@ class _OrderScreenState extends State<OrderScreen> {
                     });
                   },
                   title: AppText(
-                    text: 'Online',
+                    text: 'online'.tr,
                     fontsize: 16,
                     color: AppColors.Orange_COLOR,
                   ),
@@ -150,7 +150,7 @@ class _OrderScreenState extends State<OrderScreen> {
                     });
                   },
                   title: AppText(
-                    text: 'Offline',
+                    text: 'offline'.tr,
                     fontsize: 16,
                     color: AppColors.Orange_COLOR,
                   ),
@@ -164,7 +164,7 @@ class _OrderScreenState extends State<OrderScreen> {
             child: ElevatedButton(
                   onPressed: () async => await performOrder(),
               child: AppText(
-                text: 'Confirm Order',
+                text: 'Confirm Order'.tr,
                 color: AppColors.background_COLOR,
                 fontsize: 20,
                 fontWeight: FontWeight.bold,
@@ -185,7 +185,7 @@ class _OrderScreenState extends State<OrderScreen> {
   Widget getCard() {
     if (card == null) {
       return AppText(
-        text: 'Select Card',
+        text: 'selectCard'.tr,
         color: Colors.grey,
       );
     } else {
@@ -200,7 +200,7 @@ class _OrderScreenState extends State<OrderScreen> {
   Widget getAddress() {
     if (address == null) {
       return AppText(
-        text: 'Select Address',
+        text: 'selectAddress'.tr,
         color: Colors.grey,
       );
     } else {
@@ -216,7 +216,7 @@ class _OrderScreenState extends State<OrderScreen> {
     if (checkData())
       await makeOrder();
     else
-      Helper.showSnackBar(context, text: 'Enter Required Data');
+      Helper.showSnackBar(context, text: 'Enter Required Data'.tr);
   }
 
   bool checkData() {

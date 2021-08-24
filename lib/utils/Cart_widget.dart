@@ -2,6 +2,8 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:nova_ecommerce/models/cart_item.dart';
+import 'package:get/get.dart';
+import 'package:nova_ecommerce/shared_preferences/preferences.dart';
 
 import 'AppColors.dart';
 import 'SizeConfig.dart';
@@ -68,28 +70,42 @@ class _Cart_widgetState extends State<Cart_widget> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 AppText(
-                  text: '${widget.cartItem.nameEn}',
+                  text: SharedPreferencesController().languageCode == 'ar'
+                      ? widget.cartItem.nameAr
+                      : widget.cartItem.nameEn,
                   fontsize: 14,
                   fontWeight: FontWeight.bold,
                 ),
                 SizedBox(
                   height: 20,
                 ),
-                AppText(
-                  text: 'Price : ${widget.cartItem.price}  \$ ',
-                  fontsize: 17,
-                  fontWeight: FontWeight.bold,
-                  color: AppColors.black_COLOR,
+                RichText(
+                  text: TextSpan(
+                    text: ('Price :  ').tr,
+                    style: DefaultTextStyle.of(context).style,
+                    children: <TextSpan>[
+                      TextSpan(
+                        text: '${widget.cartItem.price}  \$ ',
+                      ),
+                    ],
+                  ),
                 ),
                 SizedBox(
-                  height: 20,
+                  height: SizeConfig.scaleHeight(8),
                 ),
-                AppText(
-                  text:
-                      'Total Price : ${widget.cartItem.price * widget.cartItem.quantity} ' + '\$',
-                  fontsize: 17,
-                  fontWeight: FontWeight.bold,
-                  color: AppColors.Orange_COLOR,
+                RichText(
+                  text: TextSpan(
+                    text: ('Total Price :  ').tr,
+                    style: DefaultTextStyle.of(context).style,
+                    children: <TextSpan>[
+                      TextSpan(
+                          text:
+                              '${widget.cartItem.price * widget.cartItem.quantity}  \$ ',
+                          style: TextStyle(
+                              color: AppColors.Orange_COLOR,
+                              fontSize: SizeConfig.scaleTextFont(17))),
+                    ],
+                  ),
                 ),
               ],
             ),

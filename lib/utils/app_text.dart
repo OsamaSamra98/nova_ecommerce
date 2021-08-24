@@ -15,19 +15,17 @@ class AppText extends StatelessWidget {
   late TextDecoration textDecoration;
   late Color decorationColor;
 
-  AppText({
-    required this.text,
-    this.color = AppColors.black_COLOR,
-    this.fontsize = 15,
-    this.fontWeight,
-    this.textAlign = TextAlign.start,
-    this.letterSpacing,
-    this.height = 0,
-    this.shadow = 0,
-    this.textDecoration =TextDecoration.none,
-    this.decorationColor = Colors.transparent
-
-  });
+  AppText(
+      {required this.text,
+      this.color = AppColors.black_COLOR,
+      this.fontsize = 15,
+      this.fontWeight,
+      this.textAlign = TextAlign.start,
+      this.letterSpacing,
+      this.height = 0,
+      this.shadow = 0,
+      this.textDecoration = TextDecoration.none,
+      this.decorationColor = Colors.transparent});
 
   @override
   Widget build(BuildContext context) {
@@ -40,8 +38,9 @@ class AppText extends StatelessWidget {
           fontSize: SizeConfig.scaleTextFont(fontsize),
           fontFamily: 'NunitoSans',
           fontWeight: fontWeight,
-          height: height,decoration: textDecoration,        decorationColor: decorationColor,
-
+          height: height,
+          decoration: textDecoration,
+          decorationColor: decorationColor,
           shadows: [Shadow(color: Colors.black, blurRadius: shadow)]),
     );
   }

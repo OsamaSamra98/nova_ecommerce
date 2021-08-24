@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nova_ecommerce/getx/user_getx_controller.dart';
+import 'package:nova_ecommerce/language/app_locale.dart';
 import 'package:nova_ecommerce/screens/BN_screen/home/about_Screen.dart';
 import 'package:nova_ecommerce/utils/AppColors.dart';
 import 'package:nova_ecommerce/utils/SizeConfig.dart';
@@ -34,6 +35,7 @@ class _setting_ScreenState extends State<setting_Screen> {
     _msgEditingController.dispose();
     super.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,16 +43,22 @@ class _setting_ScreenState extends State<setting_Screen> {
       resizeToAvoidBottomInset: false,
       body: Padding(
         padding: EdgeInsets.only(
-            top: SizeConfig.scaleHeight(50), left: SizeConfig.scaleWidth(25)),
+            top: SizeConfig.scaleHeight(50), left: SizeConfig.scaleWidth(25),right: SizeConfig.scaleWidth(25)),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            setting_card(title: 'Change Language',ontap: (){},icon: Icons.compare_arrows ,),
-            setting_card(title: 'FAQs',ontap: (){Get.to(FAQs_Screen());},),
-            setting_card(title: 'About',ontap: (){Get.to(about_Screen());},),
+            setting_card(title: 'Change Language'.tr, ontap: () {
+              AppLocale.changeLang();
+            }, icon: Icons.compare_arrows,),
+            setting_card(title: 'FAQs'.tr, ontap: () {
+              Get.to(FAQs_Screen());
+            },),
+            setting_card(title: 'About'.tr, ontap: () {
+              Get.to(about_Screen());
+            },),
             SizedBox(height: SizeConfig.scaleHeight(20),),
             AppText(
-              text: 'Contact us',
+              text: 'Contact Us'.tr,
               fontsize: 16,
               fontWeight: FontWeight.bold,
             ),
@@ -72,21 +80,21 @@ class _setting_ScreenState extends State<setting_Screen> {
               ),
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: TextField(controller:_subjectEditingController ,
-                    style: TextStyle(
-                      color: AppColors.black_COLOR,
-                    ),
-                    decoration: InputDecoration(
-                        hintText: 'subject',
-                        hintStyle: TextStyle(
-                            color: AppColors.GRAY_COLOR,
-                            fontSize: SizeConfig.scaleTextFont(16),
-                            fontFamily: 'NunitoSans'),
-                        enabledBorder: InputBorder.none,
-                        focusedBorder: InputBorder.none),
+                child: TextField(controller: _subjectEditingController,
+                  style: TextStyle(
+                    color: AppColors.black_COLOR,
                   ),
+                  decoration: InputDecoration(
+                      hintText: 'Subject'.tr,
+                      hintStyle: TextStyle(
+                          color: AppColors.GRAY_COLOR,
+                          fontSize: SizeConfig.scaleTextFont(16),
+                          fontFamily: 'NunitoSans'),
+                      enabledBorder: InputBorder.none,
+                      focusedBorder: InputBorder.none),
+                ),
               ),
-              ),
+            ),
             SizedBox(
               height: SizeConfig.scaleHeight(15),
             ),
@@ -105,7 +113,8 @@ class _setting_ScreenState extends State<setting_Screen> {
               ),
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: TextField(controller: _msgEditingController,
+                child: TextField(
+                  controller: _msgEditingController,
                   expands: true,
                   maxLines: null,
                   minLines: null,
@@ -113,7 +122,7 @@ class _setting_ScreenState extends State<setting_Screen> {
                     color: AppColors.black_COLOR,
                   ),
                   decoration: InputDecoration(
-                      hintText: 'message',
+                      hintText: 'Message'.tr,
                       hintStyle: TextStyle(
                           color: AppColors.GRAY_COLOR,
                           fontSize: SizeConfig.scaleTextFont(16),
@@ -124,11 +133,13 @@ class _setting_ScreenState extends State<setting_Screen> {
               ),
             ),
             Padding(
-              padding:  EdgeInsets.symmetric(horizontal: SizeConfig.scaleWidth(100),vertical: SizeConfig.scaleHeight(25)),
+              padding: EdgeInsets.symmetric(
+                  horizontal: SizeConfig.scaleWidth(100),
+                  vertical: SizeConfig.scaleHeight(25)),
               child: ElevatedButton(
                 onPressed: () async => await performContactUs(),
                 child: AppText(
-                  text: 'Send',
+                  text: 'Send'.tr,
                   color: Colors.white,
                   fontsize: 16,
                   fontWeight: FontWeight.bold,
@@ -146,6 +157,7 @@ class _setting_ScreenState extends State<setting_Screen> {
       ),
     );
   }
+
   Future performContactUs() async {
     if (checkData()) {
       await contactUs();
@@ -157,13 +169,14 @@ class _setting_ScreenState extends State<setting_Screen> {
         _msgEditingController.text.isNotEmpty) {
       return true;
     }
-    Helper.showSnackBar(context, text: 'Enter Required Fields', error: true);
+    Helper.showSnackBar(context, text: 'Enter Required Fields'.tr, error: true);
     return false;
   }
 
   Future contactUs() async {
-    bool status = await UsersGetxController.to.contactUs(context, subject: _subjectEditingController.text, msg: _msgEditingController.text);
-
+    bool status = await UsersGetxController.to.contactUs(
+        context, subject: _subjectEditingController.text,
+        msg: _msgEditingController.text);
   }
 }
 

@@ -10,6 +10,7 @@ import 'package:nova_ecommerce/mixins/helpers.dart';
 import 'package:nova_ecommerce/models/cart_item.dart';
 import 'package:nova_ecommerce/models/product_details.dart';
 import 'package:nova_ecommerce/screens/BN_screen/main_Screen.dart';
+import 'package:nova_ecommerce/shared_preferences/preferences.dart';
 import 'package:nova_ecommerce/utils/AppColors.dart';
 import 'package:nova_ecommerce/utils/SizeConfig.dart';
 import 'package:nova_ecommerce/utils/app_text.dart';
@@ -109,7 +110,9 @@ class _DetailsScreenState extends State<DetailsScreen> {
               Row(
                 children: [
                   AppText(
-                    text: ProductGetxController.to.productDetails.value!.nameEn,
+                    text: SharedPreferencesController().languageCode == 'ar'
+                        ? widget.productDetails.nameAr
+                        : widget.productDetails.nameEn,
                     fontsize: 18,
                     fontWeight: FontWeight.bold,
                     color: AppColors.black_COLOR,
@@ -141,21 +144,19 @@ class _DetailsScreenState extends State<DetailsScreen> {
                 ],
               ),
               SizedBox(
-                height: 10,
+                height: 5,
               ),
               Row(
                 children: [
                   RatingBar.builder(
-                    initialRating: double.parse(
-                        ProductGetxController
-                            .to.productDetails.value!.productRate
-                            .toString()),
+                    initialRating: double.parse(ProductGetxController
+                        .to.productDetails.value!.productRate
+                        .toString()),
                     minRating: 1,
                     direction: Axis.horizontal,
                     allowHalfRating: true,
                     itemCount: 5,
-                    itemPadding:
-                    EdgeInsets.symmetric(horizontal: 4.0),
+                    itemPadding: EdgeInsets.symmetric(horizontal: 4.0),
                     itemSize: 30,
                     itemBuilder: (context, _) => Icon(
                       Icons.star,
@@ -180,16 +181,24 @@ class _DetailsScreenState extends State<DetailsScreen> {
                 ],
               ),
               SizedBox(
-                height: SizeConfig.scaleHeight(25),
+                height: SizeConfig.scaleHeight(15),
               ),
-              AppText(
-                text:
-                    '${ProductGetxController.to.productDetails.value!.quantity} product available',
-                fontsize: 12,
-                color: Colors.grey,
+
+              RichText(
+                text: TextSpan(
+                  text: ('Product available : ').tr,
+                  style: TextStyle(
+                      fontSize: 12, color: AppColors.black_COLOR),
+                  children: <TextSpan>[
+                    TextSpan(
+                        text:
+                        '${ProductGetxController.to.productDetails.value!.quantity} ',
+                        style: TextStyle(fontSize: 12)),
+                  ],
+                ),
               ),
               SizedBox(
-                height: SizeConfig.scaleHeight(25),
+                height: SizeConfig.scaleHeight(10),
               ),
               Row(
                 children: [
@@ -204,12 +213,18 @@ class _DetailsScreenState extends State<DetailsScreen> {
                           textDecoration: TextDecoration.lineThrough,
                           decorationColor: Colors.red,
                         )
-                      : AppText(
-                          text:
-                              'Price : ${ProductGetxController.to.productDetails.value!.price} \$',
-                          fontsize: 15,
-                          color: AppColors.black_COLOR,
-                          fontWeight: FontWeight.bold,
+                      : RichText(
+                          text: TextSpan(
+                            text: ('Price :  ').tr,
+                            style: TextStyle(
+                                fontSize: 17, color: AppColors.black_COLOR),
+                            children: <TextSpan>[
+                              TextSpan(
+                                  text:
+                                      '${ProductGetxController.to.productDetails.value!.price} \$',
+                                  style: TextStyle(fontSize: 17)),
+                            ],
+                          ),
                         ),
                   SizedBox(
                     width: SizeConfig.scaleWidth(20),
@@ -230,14 +245,16 @@ class _DetailsScreenState extends State<DetailsScreen> {
                 height: SizeConfig.scaleHeight(25),
               ),
               AppText(
-                text: 'Highlights : ',
+                text: 'Description : '.tr,
                 fontsize: 20,
               ),
               SizedBox(
                 height: SizeConfig.scaleHeight(15),
               ),
               Text(
-                ProductGetxController.to.productDetails.value!.infoEn,
+                  SharedPreferencesController().languageCode == 'ar'
+                      ? widget.productDetails.infoAr
+                      : widget.productDetails.infoEn,
               ),
               Spacer(),
               Row(
@@ -245,18 +262,19 @@ class _DetailsScreenState extends State<DetailsScreen> {
                   SizedBox(
                     width: SizeConfig.scaleWidth(200),
                     child: ElevatedButton(
-                      onPressed: () async{
-                        bool status = await CartGetxController.to.createCartItem(cartItem);
-                        if(status){
+                      onPressed: () async {
+                        bool status = await CartGetxController.to
+                            .createCartItem(cartItem);
+                        if (status) {
                           Helper.showSnackBar(context, text: 'Add Success');
-                          cardIncrement ;
-                        }else{
+                          cardIncrement;
+                        } else {
                           Helper.showSnackBar(context, text: 'Add failed');
-                          cardIncrement ;
+                          cardIncrement;
                         }
                       },
                       child: AppText(
-                        text: 'Add To Cart',
+                        text: 'Add To Cart'.tr,
                         color: AppColors.background_COLOR,
                         fontsize: SizeConfig.scaleTextFont(20),
                         fontWeight: FontWeight.bold,
@@ -297,7 +315,6 @@ class _DetailsScreenState extends State<DetailsScreen> {
                           onPressed: () {
                             setState(() {
                               cardIncrement == 1 ? 1 : --cardIncrement;
-
                             });
                           },
                           child: Icon(
@@ -339,7 +356,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
     CartItem cartItem = CartItem();
     cartItem.imageUrl = widget.productDetails.imageUrl;
     cartItem.productId = widget.productDetails.id;
-    cartItem.price = widget.productDetails.price ;
+    cartItem.price = widget.productDetails.price;
     cartItem.nameEn = widget.productDetails.nameEn;
     cartItem.nameAr = widget.productDetails.nameAr;
     cartItem.quantity = cardIncrement;

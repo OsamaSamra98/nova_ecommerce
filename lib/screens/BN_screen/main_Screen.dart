@@ -37,7 +37,7 @@ class _main_ScreenState extends State<main_Screen> with FbNotifications {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: AppColors.black_COLOR,
       extendBodyBehindAppBar: true,
       bottomNavigationBar: BottomNavigationBar(
         selectedItemColor: AppColors.Orange_COLOR,

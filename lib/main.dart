@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:nova_ecommerce/firebase/fb_notifications.dart';
+import 'package:nova_ecommerce/language/app_locale.dart';
 import 'package:nova_ecommerce/screens/BN_screen/cart_screen.dart';
 import 'package:nova_ecommerce/screens/launch_screen.dart';
 import 'package:nova_ecommerce/shared_preferences/preferences.dart';
@@ -28,7 +29,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
         locale: Locale(SharedPreferencesController().languageCode),
-        home: launch_screen(),
+      translations: AppLocale(), // your translations
+
+      home: launch_screen(),
         debugShowCheckedModeBanner: false ,
         theme: ThemeData(
             appBarTheme: AppBarTheme(

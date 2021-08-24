@@ -37,7 +37,7 @@ class _categories_screenState extends State<categories_screen> {
                 height: SizeConfig.scaleHeight(10),
               ),
               AppText(
-                text: 'Category',
+                text: 'Categories'.tr,
                 color: AppColors.black_COLOR,
                 fontWeight: FontWeight.bold,
                 fontsize: 20,

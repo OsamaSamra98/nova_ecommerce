@@ -10,9 +10,12 @@ import '../helper/api_mixin.dart';
 
 class UserApiController with ApiMixin {
   Future<User?> login(BuildContext context,
-      {required String mobile, required String password, String? fcm_token='' }) async {
+      {required String mobile,
+      required String password,
+      String? fcm_token = ''}) async {
     var response = await http.post(getUrl(ApiSettings.LOGIN),
-        body: {'mobile': mobile, 'password': password,'fcm_token':fcm_token }, headers: baseHeader);
+        body: {'mobile': mobile, 'password': password, 'fcm_token': fcm_token},
+        headers: baseHeader);
     if (isSuccessRequest(response.statusCode)) {
       return User.fromJson(jsonDecode(response.body)['data']);
     } else if (response.statusCode != 500) {
@@ -53,7 +56,7 @@ class UserApiController with ApiMixin {
       'mobile': mobile,
       'password': password,
       'gender': gender,
-      'STORE_API_KEY': 'df51e98c-ff13-423b-b014-4905036c5030',
+      'STORE_API_KEY': '7d0664db-786b-46ba-a9df-c2ad6c7b9f50',
       'city_id': city.toString(),
     });
     if (isSuccessRequest(response.statusCode)) {
@@ -86,8 +89,8 @@ class UserApiController with ApiMixin {
 
   Future<bool> resetPassword(BuildContext context,
       {required String mobile,
-        required String code,
-        required String password}) async {
+      required String code,
+      required String password}) async {
     var response = await http.post(getUrl(ApiSettings.RESET_PASSWORD),
         body: {
           'mobile': mobile,
@@ -107,21 +110,20 @@ class UserApiController with ApiMixin {
     return false;
   }
 
-  Future<bool> activateAccount(BuildContext context, {required String mobile, required String code}) async {
-    var response = await http.post(
-        getUrl(ApiSettings.ACTIVATE_ACCOUNT),
+  Future<bool> activateAccount(BuildContext context,
+      {required String mobile, required String code}) async {
+    var response = await http.post(getUrl(ApiSettings.ACTIVATE_ACCOUNT),
         body: {
           'mobile': mobile,
           'code': code,
         },
-        headers: baseHeader
-    );
+        headers: baseHeader);
     if (isSuccessRequest(response.statusCode)) {
       showMessage(context, response);
       return true;
     } else if (response.statusCode != 500) {
       showMessage(context, response, error: true);
-    }else{
+    } else {
       handleServerError(context);
     }
     return false;
@@ -146,37 +148,35 @@ class UserApiController with ApiMixin {
     }
     return false;
   }
-  Future<bool> contactUS(BuildContext context, {required String subject, required String msg}) async {
-    var response = await http.post(
-        getUrl(ApiSettings.CONTACT_US),
+
+  Future<bool> contactUS(BuildContext context,
+      {required String subject, required String msg}) async {
+    var response = await http.post(getUrl(ApiSettings.CONTACT_US),
         body: {
           'subject': subject,
           'message': msg,
         },
-        headers: requestHeaders
-    );
+        headers: requestHeaders);
     if (isSuccessRequest(response.statusCode)) {
       showMessage(context, response);
       return true;
     } else if (response.statusCode != 500) {
       showMessage(context, response, error: true);
-    }else{
+    } else {
       handleServerError(context);
     }
     return false;
   }
-  Future<String> refreshFcmToken( {required String newFcmToken}) async {
-    var response = await http.post(
-        getUrl(ApiSettings.refresh_fcm_token),
+
+  Future<String> refreshFcmToken({required String newFcmToken}) async {
+    var response = await http.post(getUrl(ApiSettings.refresh_fcm_token),
         body: {
           'fcm_token': newFcmToken,
         },
-        headers: header
-    );
+        headers: header);
     if (isSuccessRequest(response.statusCode)) {
       return newFcmToken;
     }
-
 
     return 'false';
   }

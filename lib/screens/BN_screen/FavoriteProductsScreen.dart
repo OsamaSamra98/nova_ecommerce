@@ -5,6 +5,7 @@ import 'package:nova_ecommerce/getx/product_getx_controller.dart';
 import 'package:nova_ecommerce/screens/product/DetailsScreen.dart';
 import 'package:nova_ecommerce/utils/app_text.dart';
 import 'package:nova_ecommerce/utils/favorite_product_widget.dart';
+import 'package:get/get.dart';
 
 
 class FavoriteProductsScreen extends StatefulWidget {

@@ -9,6 +9,7 @@ import 'package:nova_ecommerce/shared_preferences/preferences.dart';
 import 'package:nova_ecommerce/utils/AppColors.dart';
 import 'package:nova_ecommerce/utils/SizeConfig.dart';
 import 'package:nova_ecommerce/utils/app_text.dart';
+import 'package:get/get.dart';
 
 class product_card extends StatelessWidget {
   final ProductDetails product;
@@ -46,9 +47,13 @@ class product_card extends StatelessWidget {
               height: SizeConfig.scaleHeight(15),
             ),
             AppText(
-              text: product.nameEn,
+              text: SharedPreferencesController().languageCode == 'ar'
+                ? product.nameAr
+                : product.nameEn,
               fontsize: 13,
               color: AppColors.black_COLOR,
+              fontWeight: FontWeight.bold,
+
             ),SizedBox(
               height: SizeConfig.scaleHeight(20),
             ),
@@ -56,13 +61,12 @@ class product_card extends StatelessWidget {
               children: [
                 product.offerPrice == null
                     ? AppText(
-                  text: 'Price : ${product.price} \$',
+                  text: 'Price :  '.tr +'${product.price} \$',
                   fontsize: 13,
                   color: AppColors.black_COLOR,
-                  fontWeight: FontWeight.bold,
                 )
                     : AppText(
-                  text: 'Price : ${product.price} \$',
+                  text: 'Price :  '.tr +'${product.price} \$',
                   fontsize: 13,
                   color: AppColors.black_COLOR,
                   fontWeight: FontWeight.bold,
@@ -73,7 +77,7 @@ class product_card extends StatelessWidget {
 
                 product.offerPrice != null
                     ? AppText(
-                  text: 'Offer: ${product.offerPrice}\$',
+                  text: 'Offer : '.tr +'${product.offerPrice} \$',
                   color: AppColors.Orange_COLOR,
                   fontsize: 13,
                   fontWeight: FontWeight.bold,
@@ -82,16 +86,9 @@ class product_card extends StatelessWidget {
               ],
             ),
             SizedBox(
-              height: 12,
+              height: SizeConfig.scaleHeight(5),
             ),
-            AppText(
-              text: '${product.quantity} product available',
-              fontsize: 12,
-              color: Colors.grey,
-            ),
-            SizedBox(
-              height: 10,
-            ),
+
             Row(
               children: [
                 Icon(Icons.star,color: Colors.amber,size: 15,),
@@ -101,29 +98,7 @@ class product_card extends StatelessWidget {
                   fontsize: 10,
                   color: Colors.grey,
                 ),
-                Spacer(),
-                // GestureDetector(
-                //   onTap: () async {
-                //     await ProductGetxController.to
-                //         .addFavoriteProducts(
-                //         context: context,
-                //         product: ProductGetxController
-                //             .to.productDetails.value!);
-                //   },
-                //   child: Container(
-                //     height: 30,
-                //     width: 30,
-                //     decoration: BoxDecoration(
-                //         shape: BoxShape.circle,
-                //         color: ProductGetxController.to.productDetails.value!.isFavorite
-                //             ? Colors.red
-                //             : Colors.grey),
-                //     child: Icon(
-                //       Icons.favorite,
-                //       color: Colors.white,
-                //     ),
-                //   ),
-                // ),
+
               ],
             ),
           ],

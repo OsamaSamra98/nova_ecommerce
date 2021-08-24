@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:nova_ecommerce/getx/cart_getx_controller.dart';
+import 'package:nova_ecommerce/getx/notification_getx_controller.dart';
 import 'package:nova_ecommerce/getx/order_getx_controller.dart';
 import 'package:nova_ecommerce/getx/product_getx_controller.dart';
 import 'package:nova_ecommerce/getx/user_getx_controller.dart';
@@ -24,6 +25,7 @@ class _launch_screenState extends State<launch_screen> {
   ProductGetxController controller = Get.put(ProductGetxController());
   OrderGetxController orderGetxController = Get.put(OrderGetxController());
   CartGetxController cartGetxController = Get.put(CartGetxController());
+  NotificationGetxController notificationGetxController = Get.put(NotificationGetxController());
 
   @override
   void initState() {

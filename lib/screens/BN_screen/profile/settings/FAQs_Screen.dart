@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:nova_ecommerce/getx/faqs_getx_controller.dart';
 import 'package:nova_ecommerce/utils/AppColors.dart';
 import 'package:nova_ecommerce/utils/SizeConfig.dart';
 import 'package:nova_ecommerce/utils/app_text.dart';

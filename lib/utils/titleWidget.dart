@@ -28,7 +28,7 @@ class titleWidget extends StatelessWidget {
         TextButton(
           onPressed: ontap ,
           child: AppText(
-            text: 'See More',
+            text: 'See More'.tr,
             fontsize: 14,
             color: AppColors.GRAY_COLOR,
             letterSpacing: 1,
